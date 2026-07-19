@@ -1,0 +1,70 @@
+vendor_name: Heidelberg of Lorain
+
+accounts:
+  beer: "Cost of Goods:Beer"
+  wine: "Cost of Goods:Wine"
+  low_proof: "Cost of Goods:Low Proof / Mixers"
+  beverage: "Cost of Goods:Beverage"
+
+invoice_rules:
+  beer_invoice:
+    action: single_account
+    account: beer
+  wine_spirits_invoice:
+    allowed_accounts: [wine, low_proof]
+  beverage_invoice:
+    allowed_accounts: [beverage, low_proof]
+
+split_case:
+  "00801":
+    description: Wine bottle split charge
+    allocate_by: bottle_count
+    eligible_uom: BO
+    default_account: wine
+  "00804":
+    description: Low Proof / Mixer bottle split charge
+    allocate_by: bottle_count
+    eligible_uom: BO
+    default_account: low_proof
+  exclude_uom: [CA]
+
+product_keywords:
+  beer:
+    - WHITE CLAW
+    - MIKE'S
+    - SMIRNOFF SMASH
+    - CAYMAN JACK
+    - TWISTED TEA
+    - FOUR LOKO
+  low_proof:
+    - HIGH NOON
+    - SVEDKA
+    - MALIBU
+    - CHI CHI'S
+    - MAJOR PETERS
+    - ROSE'S
+  beverage:
+    - CALYPSO
+  wine:
+    - CHLOE
+    - MEIOMI
+    - YES WAY
+    - LIVINGSTON
+    - RELAX
+    - SIMI
+    - NOBILO
+    - SCHMITT SOHNE
+    - FRANZIA
+    - TAYLOR
+    - LA CREMA
+    - BAREFT
+    - BLACK BOX
+    - ALAMOS
+    - FERRARI-CARANO
+    - BOTA
+    - DECOY
+
+validation:
+  ignore_zero_quantity: true
+  unknown_alcohol_action: error
+  required_difference: 0.00
