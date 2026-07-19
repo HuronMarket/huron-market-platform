@@ -1,0 +1,35 @@
+vendor_name: Heidelberg of Lorain
+allowed_accounts:
+  beer: Cost of Goods:Beer
+  wine: Cost of Goods:Wine
+  low_proof: Cost of Goods:Low Proof / Mixers
+  beverage: Cost of Goods:Beverage
+invoice_rules:
+  beer:
+    split_only_between:
+      - beer
+  wine:
+    split_only_between:
+      - wine
+      - low_proof
+  beverage:
+    split_only_between:
+      - beverage
+      - low_proof
+  high_proof_allowed: false
+split_case_rule:
+  allocate_to_package_types:
+    - BO
+  exclude_package_types:
+    - CA
+  allocation_basis: bottle_count
+product_overrides:
+  High Noon: low_proof
+  Malibu: low_proof
+  Orloff: low_proof
+  Mr. Boston: low_proof
+validation:
+  reject_unknown_alcohol_products: true
+  remove_zero_quantity_lines: true
+  remove_net_zero_pairs: true
+  require_invoice_reconciliation: true
